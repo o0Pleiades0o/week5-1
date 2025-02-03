@@ -1,11 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 import "./CardProduct.css"
-import { NavLink } from 'react-router'
 
 const CardProducts = (props) => {
+    const navigate = useNavigate()
 
     const handleClick = () => {
-        console.log("Product:", props.item.Name);
+        navigate(`/product/${encodeURIComponent(props.item.Name)}`)
     }
 
     const handleBagClick = (e) => {
