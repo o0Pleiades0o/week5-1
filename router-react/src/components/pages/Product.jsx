@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import Products from '../../Data'
-import CardProducts from '../layouts/CardProduct/CardProduct'
+import { useCart } from "../CartContext";
+
 const Product = () => {
   const { productName } = useParams()
   const navigate = useNavigate()
+  const { addToCart } = useCart()
   const [quantity, setQuantity] = useState(1)
 
   // Find the specific product
@@ -15,8 +17,11 @@ const Product = () => {
   }
 
   const handleAddToCart = () => {
-    console.log(`Added ${quantity} of ${product.Name} to cart`)
-    // Add your cart logic here
+    addToCart(product, quantity)
+    toast.success(`Added ${quantity} ${product.Name} to cart!`, {
+      position: "top-right",
+      autoClose: 2000,
+    })
   }
 
   const handleQuantityChange = (type) => {
@@ -35,7 +40,7 @@ const Product = () => {
           <img
             src={product.image}
             alt={product.Name}
-            className="img-fluid rounded shadow-lg"
+            className="img-fluid rounded shadow"
             style={{ maxHeight: '500px', objectFit: 'cover', marginBottom: '2rem' }}
           />
         </div>

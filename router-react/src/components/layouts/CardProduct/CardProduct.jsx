@@ -1,17 +1,24 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
+import { useCart } from "../../CartContext";
+import { toast } from 'react-toastify'
 import "./CardProduct.css"
 
 const CardProducts = (props) => {
     const navigate = useNavigate()
+    const { addToCart } = useCart()
 
-    const handleClick = () => {
+     const handleClick = () => {
         navigate(`/product/${encodeURIComponent(props.item.Name)}`)
     }
 
     const handleBagClick = (e) => {
         e.stopPropagation();
-        console.log("Add to cart:", props.item.Name);
+        addToCart(props.item)
+        toast.success(`Added ${props.item.Name} to cart!`, {
+            position: "top-right",
+            autoClose: 2000,
+        })
     }
 
     return (

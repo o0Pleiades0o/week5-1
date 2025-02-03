@@ -8,20 +8,26 @@ import Cart from "./components/pages/Cart.jsx"
 import Product from "./components/pages/Product.jsx"
 import Header from "./components/layouts/Header/Header.jsx"
 import Footer from "./components/layouts/Footer/Footer.jsx"
+import { CartProvider } from './components/CartContext.jsx'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (
     <>
-      <Header />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/Women" element={<Women />} />
-        <Route path="/Men" element={<Men />} />
-        <Route path="/Kids" element={<Kids />} />
-        <Route path="/Cart" element={<Cart />} />
-        <Route path="/product/:productName" element={<Product />} />
-      </Routes>
-      <Footer />
+      <CartProvider>
+        <Header />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/Women" element={<Women />} />
+          <Route path="/Men" element={<Men />} />
+          <Route path="/Kids" element={<Kids />} />
+          <Route path="/Cart" element={<Cart />} />
+          <Route path="/product/:productName" element={<Product />} />
+        </Routes>
+        <Footer />
+        <ToastContainer />
+      </CartProvider>
     </>
   )
 }
