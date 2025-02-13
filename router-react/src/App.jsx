@@ -6,6 +6,8 @@ import Men from "./components/pages/Men.jsx"
 import Kids from "./components/pages/Kids.jsx"
 import Cart from "./components/pages/Cart.jsx"
 import Product from "./components/pages/Product.jsx"
+import Login from "./components/pages/Login.jsx"
+import Register from "./components/pages/Register.jsx"
 import Header from "./components/layouts/Header/Header.jsx"
 import Footer from "./components/layouts/Footer/Footer.jsx"
 import { CartProvider } from './components/CartContext.jsx'
@@ -24,6 +26,8 @@ function App() {
           <Route path="/Kids" element={<Kids />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/product/:productName" element={<Product />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
         </Routes>
         <Footer />
         <ToastContainer />

@@ -68,6 +68,7 @@ const Header = () => {
             <ul className="dropdown-menu text-small">
               <li><a className="dropdown-item" href="#">Settings</a></li>
               <li><a className="dropdown-item" href="#">Profile</a></li>
+              <li><NavLink className="dropdown-item" to={'/Login'}>Login</NavLink></li>
               <li><hr className="dropdown-divider" /></li>
               <li><a className="dropdown-item" href="#">Sign out</a></li>
             </ul>
