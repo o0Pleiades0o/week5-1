@@ -1,12 +1,16 @@
 import React from 'react'
+import { NavLink } from 'react-router'
 
 const Login = () => {
+    //Create dummy Admin and User Account
+    
+
   return (
     <div className="container py-5">
         <div className='mx-5'>
             <h2>Login with Email</h2>
             <p>If you already have an online Shopland account, simply use the email address you previously registered in your member login.</p>
-            <form className="mt-5">
+            <form className="my-5">
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -21,7 +25,9 @@ const Login = () => {
                     <label className="form-check-label" for="exampleCheck1">Remember me</label>
                     </div>
                     <div>
-                        <label>Forget Password</label>
+                        <a href="">Forget Password </a>
+                        <label> | </label>
+                        <a href=""><NavLink to={'/Register'}> Don't have account?</NavLink></a>
                     </div>
                 </div>
                 <button type="submit" className="btn btn-dark">Submit</button>
