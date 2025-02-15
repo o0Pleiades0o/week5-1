@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router';
 import { useCart } from "../../CartContext";
 
 const Header = () => {
   const { cartItems } = useCart();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // สถานะการล็อกอิน
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
 
   return (
-    <header className="p-3 mb-3 border-bottom">
+    <header className="p-3 border-bottom">
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
@@ -63,14 +72,22 @@ const Header = () => {
           </form>
           <div className="dropdown text-end">
             <a href="#" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/mdo.png" alt="mdo" width={32} height={32} className="rounded-circle" />
+              {isLoggedIn ? (
+                <img src="https://github.com/mdo.png" alt="Profile" width={32} height={32} className="rounded-circle" />
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-person" viewBox="0 0 16 16">
+                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                </svg>
+              )}
             </a>
             <ul className="dropdown-menu text-small">
               <li><a className="dropdown-item" href="#">Settings</a></li>
               <li><a className="dropdown-item" href="#">Profile</a></li>
-              <li><NavLink className="dropdown-item" to={'/Login'}>Login</NavLink></li>
-              <li><hr className="dropdown-divider" /></li>
-              <li><a className="dropdown-item" href="#">Sign out</a></li>
+              {!isLoggedIn ? (
+                <li><NavLink className="dropdown-item" to="/Login" onClick={handleLogin}>Login</NavLink></li>
+              ) : (
+                <li><button className="dropdown-item" onClick={handleLogout}>Logout</button></li>
+              )}
             </ul>
           </div>
           <NavLink 

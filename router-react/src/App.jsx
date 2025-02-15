@@ -8,6 +8,7 @@ import Cart from "./components/pages/Cart.jsx"
 import Product from "./components/pages/Product.jsx"
 import Login from "./components/pages/Login.jsx"
 import Register from "./components/pages/Register.jsx"
+import DashBorad from "./components/pages/DashBorad.jsx"
 import Header from "./components/layouts/Header/Header.jsx"
 import Footer from "./components/layouts/Footer/Footer.jsx"
 import { CartProvider } from './components/CartContext.jsx'
@@ -28,6 +29,7 @@ function App() {
           <Route path="/product/:productName" element={<Product />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/DashBorad" element={<DashBorad />} />
         </Routes>
         <Footer />
         <ToastContainer />
