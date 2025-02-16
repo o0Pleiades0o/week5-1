@@ -8,7 +8,7 @@ const CardProducts = (props) => {
     const navigate = useNavigate()
     const { addToCart } = useCart()
 
-     const handleClick = () => {
+    const handleClick = () => {
         navigate(`/product/${encodeURIComponent(props.item.Name)}`)
     }
 
